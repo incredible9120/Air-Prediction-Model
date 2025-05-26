@@ -1,8 +1,8 @@
-import pandas as pd
-import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_absolute_error
+import pandas as pd  # type: ignore
+import numpy as np  # type: ignore
+from sklearn.model_selection import train_test_split  # type: ignore
+from sklearn.ensemble import RandomForestRegressor  # type: ignore
+from sklearn.metrics import mean_absolute_error  # type: ignore
 
 # Step 1: Generate synthetic air quality data for five months
 months = ["January", "February", "March", "April", "May"]
@@ -23,7 +23,7 @@ data = {
 df = pd.DataFrame(data)
 
 # Convert categorical 'Month' data into numeric data
-df['Month'] = pd.Categorical(df['Month']).codes
+df["Month"] = pd.Categorical(df["Month"]).codes
 
 # Display generated synthetic data
 print("Synthetic Air Quality Data:")
@@ -47,12 +47,14 @@ mae = mean_absolute_error(y_test, y_pred)
 print(f"\nMean Absolute Error: {mae}")
 
 # Step 5: Predict future AQI for a new month (example: June)
-future_data = pd.DataFrame({
-    "Month": [5],  # For example, "June" could be encoded as 5
-    "CO2": [650],  # Replace with actual or expected CO2 level
-    "NO2": [0.07],
-    "SO2": [0.1],
-    "PM2.5": [0.03]
-})
+future_data = pd.DataFrame(
+    {
+        "Month": [5],  # For example, "June" could be encoded as 5
+        "CO2": [650],  # Replace with actual or expected CO2 level
+        "NO2": [0.07],
+        "SO2": [0.1],
+        "PM2.5": [0.03],
+    }
+)
 future_aqi = model.predict(future_data)
 print("\nPredicted AQI for June:", future_aqi)
